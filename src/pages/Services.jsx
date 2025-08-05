@@ -51,7 +51,7 @@ const Services = () => {
       
       title: "Entertainment",
       description: "Full-service entertainment production including talent management, show production, and live entertainment experiences.",
-      features: ["Talent Booking & Management", "Show Production", "Live Entertainment", "Concert Production", "Celebrity Appearances", "Entertainment Consulting"],
+      features: ["Talent Booking & Management", "Live Entertainment", "Concert Production", "Celebrity Appearances", "Entertainment Consulting", "Wedding Parties"],
       image: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg",
       
     },
@@ -102,48 +102,75 @@ const Services = () => {
   ];
 
   const industries = [
-    { name: "Technology & Software", projects: "150+" },
-    { name: "Healthcare & Medical", projects: "120+" },
-    { name: "Finance & Banking", projects: "140+" },
-    { name: "Retail & E-commerce", projects: "200+" },
-    { name: "Entertainment & Media", projects: "300+" },
-    { name: "Real Estate & Construction", projects: "110+" },
-    { name: "Education & Training", projects: "130+" },
-    { name: "Non-Profit Organizations", projects: "80+" },
-    { name: "Hospitality & Tourism", projects: "90+" },
-    { name: "Automotive & Transportation", projects: "70+" },
-    { name: "Food & Beverage", projects: "160+" },
-    { name: "Fashion & Beauty", projects: "100+" },
-    { name: "Sports & Fitness", projects: "85+" },
-    { name: "Government & Public Sector", projects: "60+" },
-    { name: "Manufacturing & Industrial", projects: "75+" },
-    { name: "Legal & Professional Services", projects: "65+" },
-    { name: "Energy & Utilities", projects: "45+" },
-    { name: "Agriculture & Environment", projects: "55+" },
-    { name: "Telecommunications", projects: "40+" },
-    { name: "Startups & Entrepreneurs", projects: "180+" }
-  ];
+  { name: "Technology & Software" },
+  { name: "Healthcare & Medical" },
+  { name: "Finance & Banking" },
+  { name: "Retail & E-commerce" },
+  { name: "Entertainment & Media" },
+  { name: "Real Estate & Construction" },
+  { name: "Education & Training" },
+  { name: "Non-Profit Organizations" },
+  { name: "Hospitality & Tourism" },
+  { name: "Automotive & Transportation" },
+  { name: "Food & Beverage" },
+  { name: "Fashion & Beauty" },
+  { name: "Sports & Fitness" },
+  { name: "Government & Public Sector" },
+  { name: "Manufacturing & Industrial" },
+  { name: "Legal & Professional Services" },
+  { name: "Energy & Utilities" },
+  { name: "Agriculture & Environment" },
+  { name: "Telecommunications" },
+  { name: "Startups & Entrepreneurs" }
+];
+
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      {/* Hero Section */}
-<section className="relative py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-  <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184434/pexels-photo-3184434.jpeg')] bg-cover bg-center opacity-10"></div>
+     <section className="relative py-40 bg-gradient-to-br from-gray-950 via-gray-900 to-black text-white overflow-hidden">
+  <div className="max-w-6xl mx-auto px-6 text-center">
 
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1 }}
-    viewport={{ once: true }}
-    className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-  >
-    <h1 className="text-6xl md:text-7xl font-bold text-white mb-8">
-      Our <span className="gradient-text">Services</span>
-    </h1>
-    <p className="text-2xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
-      Comprehensive creative solutions designed to elevate your brand and captivate your audience across all channels and platforms with exceptional quality and innovation.
-    </p>
-  </motion.div>
+    {/* Title */}
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9 }}
+      viewport={{ once: true }}
+      className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight mb-8"
+    >
+      Creative Services That <br />
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+        Inspire & Convert
+      </span>
+    </motion.h1>
+
+    {/* Subtitle */}
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, delay: 0.2 }}
+      viewport={{ once: true }}
+      className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
+    >
+      From idea to execution, we deliver captivating brand experiences — across digital, events, film, and design — with precision, emotion, and impact.
+    </motion.p>
+
+    {/* CTA */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+      viewport={{ once: true }}
+    >
+      <Link
+        to="/contact"
+        className="inline-flex items-center gap-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-10 py-5 rounded-full font-bold text-xl hover:scale-105 hover:shadow-lg transition-all duration-300"
+      >
+        Let’s Work Together
+        <ArrowRight className="w-6 h-6" />
+      </Link>
+    </motion.div>
+  </div>
 </section>
 
 
@@ -300,7 +327,7 @@ const Services = () => {
           <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors mb-3">
             {industry.name}
           </h3>
-          <div className="text-yellow-400 font-semibold text-lg">{industry.projects} Projects</div>
+          
         </motion.div>
       ))}
     </div>

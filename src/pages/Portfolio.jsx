@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, ArrowRight, Play, Award, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -10,7 +11,8 @@ const Portfolio = () => {
     { id: 'events', label: 'Events', count: 8 },
     { id: 'films', label: 'Films', count: 6 },
     { id: 'branding', label: 'Branding', count: 5 },
-    { id: 'digital', label: 'Digital Marketing', count: 5 }
+    { id: 'digital', label: 'Digital Marketing', count: 5 },
+    { id: 'entertainment', label: 'Entertainment', count: 5 }
   ];
 
   const projects = [
@@ -145,7 +147,130 @@ const Portfolio = () => {
       client: "InnovateTech",
       year: "2023",
       award: null
-    }
+    },
+    {
+      id: 13,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment1.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 14,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment2.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 15,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment3.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 16,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment4.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 17,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment5.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 18,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment6.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 19,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment7.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 20,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment8.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 21,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment9.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 22,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment10.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+    {
+      id: 22,
+      title: "Fashion Week Runway Show",
+      category: "entertainment",
+      type: "Fashion Event",
+      image: "/Images/entertainment11.jpg",
+      description: "Glamorous fashion week runway show with dramatic lighting, professional photography, and live streaming coverage.",
+      client: "Fashion Forward",
+      year: "2023",
+      award: null
+    },
+   
+    
   ];
 
   const filteredProjects = activeFilter === 'all' 
@@ -170,17 +295,31 @@ const Portfolio = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg')] bg-cover bg-center opacity-10"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fadeIn">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-8">
-            Our <span className="gradient-text">Portfolio</span>
-          </h1>
-          <p className="text-2xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
-            Explore our showcase of creative excellence - from spectacular events and compelling films to innovative digital campaigns and memorable brand identities that drive real results.
-          </p>
-        </div>
-      </section>
+     <section className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-gray-800 overflow-hidden">
+  <motion.div
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    viewport={{ once: true }}
+    className="max-w-6xl mx-auto px-6 text-center"
+  >
+    <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight text-white mb-6">
+      Discover Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Creative Showcase</span>
+    </h1>
+    <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
+      From breathtaking events to powerful films and bold branding — explore the portfolio that defines innovation, elegance, and results-driven design.
+    </p>
+    <a
+      href="#projects"
+      className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+    >
+      View Our Work
+      <ArrowRight className="w-5 h-5" />
+    </a>
+  </motion.div>
+</section>
+
+
 
       {/* Filter Tabs */}
       <section className="py-16 bg-gray-900">

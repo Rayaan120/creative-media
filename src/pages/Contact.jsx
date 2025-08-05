@@ -1,6 +1,7 @@
 import React, { useState, useRef  } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageSquare, Calendar, Users } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
 
 
 
@@ -193,19 +194,39 @@ const Contact = () => {
 
   return (
     <div className="pt-16">
-      {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg')] bg-cover bg-center opacity-10"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fadeIn">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-8">
-            Get In <span className="gradient-text">Touch</span>
-          </h1>
-          <p className="text-2xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
-            Ready to bring your vision to life? Let's discuss your project requirements and create something extraordinary together. 
-            Our team is here to help you every step of the way.
-          </p>
-        </div>
-      </section>
+   <section className="relative py-36 md:py-48 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white overflow-hidden">
+  {/* Optional background glow */}
+  <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-to-r from-yellow-400/10 to-orange-500/10 rounded-full blur-3xl animate-pulse" />
+  <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+
+  {/* Animated Content */}
+  <motion.div
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    viewport={{ once: true }}
+    className="max-w-6xl mx-auto px-6 text-center relative z-10"
+  >
+    <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6">
+      Elevate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Brand Experience</span>
+    </h1>
+
+    <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+      We help businesses turn bold ideas into immersive events, videos, and visual experiences that leave a lasting impact.
+    </p>
+
+    <motion.button
+      onClick={handleBookNow}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+      className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300"
+    >
+      Start Your Project
+      <Send className="w-5 h-5" />
+    </motion.button>
+  </motion.div>
+</section>
+
 
       {/* Contact Form & Info */}
       <section className="py-24 bg-gray-900">

@@ -90,53 +90,46 @@ const Home = () => {
 
   return (
     <div className="pt-16">
-      {/* Hero Section */}
-     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
-  {/* Background Layers */}
-  <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg')] bg-cover bg-center opacity-10"></div>
-  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800 overflow-hidden">
+  {/* Floating Gradient Shapes */}
+  <div className="absolute top-0 left-1/4 w-80 h-80 bg-gradient-to-tr from-yellow-400/20 to-orange-500/20 rounded-full blur-3xl animate-pulse-slow" />
+  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse-slow delay-500" />
 
   {/* Animated Content */}
   <motion.div
     initial={{ opacity: 0, y: 60 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1 }}
-    className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+    className="relative z-10 text-center max-w-6xl px-6"
   >
-    <div className="p-10 rounded-2xl shadow-2xl space-y-8">
-      <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-        <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
-          Media Factory
-        </span>
-        <br />
-        <span className="text-white">Production House</span>
-      </h1>
-      <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-        From spectacular events to compelling films, innovative digital marketing to stunning brand identities –
-        we're your complete creative production powerhouse delivering excellence across all media channels.
-      </p>
+    <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-8 tracking-tight">
+      <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-lg">
+        Media Factory
+      </span>
+      <br />
+      <span className="text-white">Production House</span>
+    </h1>
 
-      <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-        <Link
-          to="/portfolio"
-          className="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-10 py-5 rounded-full font-bold text-xl hover:shadow-2xl hover:shadow-yellow-400/25 transition-all duration-300 flex items-center group btn-primary"
-        >
-          View Our Work
-          <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-        </Link>
-        <Link
-          to="/contact"
-          className="border-2 border-yellow-400 text-yellow-400 px-10 py-5 rounded-full font-bold text-xl hover:bg-yellow-400 hover:text-gray-900 transition-all duration-300"
-        >
-          Get Started
-        </Link>
-      </div>
+    <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">
+      From unforgettable events and cinematic films to strategic digital campaigns and stunning branding — we craft exceptional experiences across every media channel.
+    </p>
+
+    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+      <Link
+        to="/portfolio"
+        className="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-12 py-5 rounded-full font-bold text-xl hover:shadow-xl hover:shadow-yellow-400/25 transition-all duration-300 flex items-center group"
+      >
+        View Our Work
+        <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+      </Link>
+      <Link
+        to="/contact"
+        className="border-2 border-yellow-400 text-yellow-400 px-12 py-5 rounded-full font-bold text-xl hover:bg-yellow-400 hover:text-gray-900 transition-all duration-300"
+      >
+        Get Started
+      </Link>
     </div>
   </motion.div>
-
-  {/* Floating gradient shapes */}
-  <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-yellow-400/10 to-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-  <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 </section>
 
 

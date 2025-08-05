@@ -1,7 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MapPin, Clock, Users, ArrowRight, CheckCircle, DollarSign, Heart, Zap, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
+ import emailjs from '@emailjs/browser';
+
 
 const Careers = () => {
+ 
+
+
+const formRef = useRef();
+const [isSent, setIsSent] = useState(false);
+
+const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    'your_service_id',       // Replace with your actual service ID
+    'your_template_id',      // Replace with your actual template ID
+    formRef.current,
+    'your_public_key'        // Replace with your actual public key
+  ).then(() => {
+    setIsSent(true);
+    formRef.current.reset();
+  }).catch((error) => {
+    console.error('EmailJS error:', error);
+  });
+};
+
+
+
+
+
   const buildGmailUrl = (to, subject, body) =>
   `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
@@ -16,178 +45,127 @@ const Careers = () => {
     { icon: Award, title: "Recognition & Rewards", description: "Regular recognition programs and opportunities to work on award-winning projects" }
   ];
 
-  const jobs = [
-    {
-      id: 1,
-      title: "Senior Video Editor",
-      department: "Production",
-      type: "Full-time",
-      location: "New York, NY",
-      experience: "5+ years",
-      salary: "$75,000 - $95,000",
-      description: "We're looking for a talented Senior Video Editor to join our production team. You'll work on high-profile projects including commercials, documentaries, and corporate videos while mentoring junior team members.",
-      requirements: [
-        "5+ years of professional video editing experience",
-        "Expert knowledge of Adobe Premiere Pro, After Effects, and DaVinci Resolve",
-        "Experience with color grading and audio post-production",
-        "Strong storytelling and creative skills",
-        "Ability to work under tight deadlines and manage multiple projects",
-        "Portfolio demonstrating diverse editing styles and techniques"
-      ],
-      responsibilities: [
-        "Edit and assemble video content for various client projects",
-        "Collaborate with directors and producers on creative decisions",
-        "Manage multiple projects simultaneously while maintaining quality",
-        "Ensure technical quality and brand consistency across all deliverables",
-        "Mentor junior editors and provide creative guidance and feedback"
-      ]
-    },
-    {
-      id: 2,
-      title: "Digital Marketing Specialist",
-      department: "Marketing",
-      type: "Full-time",
-      location: "New York, NY",
-      experience: "3+ years",
-      salary: "$55,000 - $70,000",
-      description: "Join our dynamic marketing team to develop and execute digital marketing campaigns that drive results for our diverse client portfolio across multiple industries.",
-      requirements: [
-        "3+ years of digital marketing experience with proven results",
-        "Proficiency in Google Ads, Facebook Ads, and social media platforms",
-        "Experience with marketing automation tools and CRM systems",
-        "Strong analytical skills and data-driven approach to optimization",
-        "Excellent written and verbal communication skills",
-        "Bachelor's degree in Marketing, Communications, or related field"
-      ],
-      responsibilities: [
-        "Develop and execute comprehensive digital marketing campaigns",
-        "Manage social media accounts and content calendars for multiple clients",
-        "Analyze campaign performance and optimize for maximum ROI",
-        "Collaborate with creative team on marketing materials and content",
-        "Present campaign results and insights to clients and stakeholders"
-      ]
-    },
-    {
-      id: 3,
-      title: "Event Production Coordinator",
-      department: "Events",
-      type: "Full-time",
-      location: "New York, NY",
-      experience: "2+ years",
-      salary: "$45,000 - $60,000",
-      description: "Coordinate and manage event production from concept to execution. Work closely with clients to deliver memorable experiences that exceed expectations.",
-      requirements: [
-        "2+ years of event planning or production experience",
-        "Strong organizational and project management skills",
-        "Experience with event management software and vendor coordination",
-        "Excellent communication and client relations skills",
-        "Ability to work flexible hours including evenings and weekends",
-        "Attention to detail and creative problem-solving abilities"
-      ],
-      responsibilities: [
-        "Coordinate all aspects of event production from planning to execution",
-        "Manage vendor relationships, contracts, and logistics coordination",
-        "Oversee event logistics, timeline management, and on-site coordination",
-        "Ensure client satisfaction and successful event outcomes",
-        "Collaborate with creative team on event concepts and design elements"
-      ]
-    },
-    {
-      id: 4,
-      title: "Creative Director",
-      department: "Creative",
-      type: "Full-time",
-      location: "New York, NY",
-      experience: "8+ years",
-      salary: "$100,000 - $130,000",
-      description: "Lead our creative team in developing innovative concepts and strategies for our clients across all service areas. Drive creative excellence and strategic thinking.",
-      requirements: [
-        "8+ years of creative leadership experience in agency environment",
-        "Portfolio demonstrating creative excellence across multiple mediums",
-        "Experience managing and inspiring creative teams",
-        "Strong presentation and client communication skills",
-        "Degree in Design, Advertising, or related creative field",
-        "Knowledge of current design trends and emerging technologies"
-      ],
-      responsibilities: [
-        "Lead creative strategy and concept development for major client projects",
-        "Oversee creative team performance and project quality standards",
-        "Present creative concepts and strategies to clients and stakeholders",
-        "Collaborate with account management on project goals and objectives",
-        "Stay current with industry trends and innovative creative approaches"
-      ]
-    },
-    {
-      id: 5,
-      title: "Motion Graphics Designer",
-      department: "Design",
-      type: "Full-time",
-      location: "New York, NY",
-      experience: "4+ years",
-      salary: "$65,000 - $80,000",
-      description: "Create stunning motion graphics and animations for various projects including commercials, events, and digital content. Push creative boundaries with cutting-edge design.",
-      requirements: [
-        "4+ years of motion graphics and animation experience",
-        "Expert proficiency in After Effects, Cinema 4D, and Adobe Creative Suite",
-        "Strong design fundamentals and typography skills",
-        "Experience with 3D animation, rendering, and compositing",
-        "Portfolio showcasing diverse animation styles and techniques",
-        "Understanding of video production workflow and technical requirements"
-      ],
-      responsibilities: [
-        "Create motion graphics and animations for video projects and campaigns",
-        "Develop visual concepts, style guides, and animation frameworks",
-        "Collaborate with video editors and creative directors on project vision",
-        "Ensure consistency with brand guidelines and creative standards",
-        "Meet project deadlines while maintaining exceptional quality standards"
-      ]
-    },
-    {
-      id: 6,
-      title: "Account Manager",
-      department: "Client Services",
-      type: "Full-time",
-      location: "New York, NY",
-      experience: "3+ years",
-      salary: "$60,000 - $75,000",
-      description: "Manage client relationships and serve as the primary liaison between clients and our creative teams. Drive account growth and ensure exceptional service delivery.",
-      requirements: [
-        "3+ years of account management or client services experience",
-        "Strong communication, presentation, and relationship-building skills",
-        "Experience in advertising, media, or creative industries preferred",
-        "Project management skills and attention to detail",
-        "Bachelor's degree in Business, Communications, or related field",
-        "Ability to manage multiple client accounts simultaneously"
-      ],
-      responsibilities: [
-        "Manage client relationships and serve as primary point of contact",
-        "Coordinate project timelines, deliverables, and client communications",
-        "Present project updates, results, and strategic recommendations to clients",
-        "Identify opportunities for account growth and service expansion",
-        "Collaborate with internal teams on project execution and quality delivery"
-      ]
-    }
-  ];
+ const jobs = [
+  {
+    id: 1,
+    title: "Sales and Marketing Executive",
+    department: "Marketing & Sales",
+    type: "Full-time",
+    location: "Dubai",
+    experience: "2+ years",
+   
+    description: "We are seeking a motivated Sales and Marketing Executive to grow our client base and promote our creative services. You’ll drive campaigns, build relationships, and help position Media Factory as a leader in the industry.",
+    requirements: [
+      "2+ years of experience in sales, marketing, or business development",
+      "Strong understanding of digital and traditional marketing strategies",
+      "Excellent communication, negotiation, and interpersonal skills",
+      "Proficiency in CRM tools, email marketing, and sales reporting",
+      "Bachelor’s degree in Marketing, Business, or related field",
+      "Ability to meet sales targets and manage multiple campaigns"
+    ],
+    responsibilities: [
+      "Develop and execute sales and marketing strategies",
+      "Generate leads and convert prospects into clients",
+      "Build long-term relationships with key clients",
+      "Coordinate marketing campaigns across platforms",
+      "Analyze and report on campaign performance",
+      "Attend industry events and represent the brand"
+    ]
+  },
+  {
+    id: 2,
+    title: "Graphic Designer",
+    department: "Design",
+    type: "Full-time",
+    location: "Dubai",
+    experience: "2+ years",
+    
+    description: "We’re looking for a creative Graphic Designer to craft compelling visuals across print and digital platforms. You’ll work closely with our creative team to produce marketing materials, social media assets, and brand visuals.",
+    requirements: [
+      "2+ years of graphic design experience",
+      "Proficient in Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
+      "Strong understanding of design principles, layout, and typography",
+      "Experience designing for both digital and print media",
+      "Excellent attention to detail and organizational skills",
+      "Portfolio showcasing a variety of creative work"
+    ],
+    responsibilities: [
+      "Design marketing materials, social media graphics, and branding assets",
+      "Collaborate with creative directors and content teams",
+      "Ensure designs align with brand identity and project goals",
+      "Revise concepts based on feedback in a timely manner",
+      "Prepare and deliver final design files for production or deployment",
+      "Stay updated with design trends and best practices"
+    ]
+  },
+  {
+    id: 3,
+    title: "Delivery Driver",
+    department: "Logistics",
+    type: "Full-time",
+    location: "Dubai",
+    experience: "1+ year",
+    
+    description: "We are hiring a reliable and punctual Delivery Driver to transport equipment and supplies to various client sites and event venues. You’ll play a key role in the success of our operations and client satisfaction.",
+    requirements: [
+      "1+ year of professional driving experience",
+      "Valid driver’s license with a clean driving record",
+      "Familiarity with GPS navigation and local routes",
+      "Ability to lift and carry heavy items (up to 50 lbs)",
+      "Strong time management and communication skills",
+      "Willingness to work flexible hours including weekends"
+    ],
+    responsibilities: [
+      "Deliver and pick up equipment and materials on time",
+      "Ensure safe loading, transport, and unloading of items",
+      "Conduct basic vehicle inspections and report issues",
+      "Maintain delivery records and logs",
+      "Coordinate with logistics team for scheduling and routing",
+      "Represent the company professionally with clients on-site"
+    ]
+  },
+  // Keep other job entries (4 to 6) unchanged or continue replacing as needed
+];
 
-  const handleApply = (jobTitle) => {
-    // In a real application, this would open an application form or redirect to an application portal
-    alert(`Application form for ${jobTitle} would open here. In a real implementation, this would redirect to an application portal or open a detailed application form with file upload capabilities.`);
-  };
+
+ const handleApply = (jobTitle) => {
+  const gmailUrl = buildGmailUrl(
+    'shamediafactory@gmail.com',
+    `Application for ${jobTitle}`,
+    `Hi Media Factory Team,\n\nI am interested in applying for the ${jobTitle} position. Please find my resume attached.\n\nBest regards,\n[Your Name]`
+  );
+  window.open(gmailUrl, '_blank');
+};
+
 
   return (
     <div className="pt-16">
-      {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg')] bg-cover bg-center opacity-10"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fadeIn">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-8">
-            Join Our <span className="gradient-text">Team</span>
-          </h1>
-          <p className="text-2xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
-            Build your career with a dynamic team of creative professionals. We're looking for talented individuals who share our passion for excellence, innovation, and creating extraordinary experiences.
-          </p>
-        </div>
-      </section>
+    <section className="relative py-40 bg-gradient-to-br from-black via-gray-900 to-gray-800 overflow-hidden">
+  <motion.div
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    viewport={{ once: true }}
+    className="max-w-6xl mx-auto px-6 text-center"
+  >
+    <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight text-white mb-6">
+      Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Creative Team</span>
+    </h1>
+
+    <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
+      Build your career with passionate professionals. We’re looking for talented minds driven by innovation, storytelling, and bold ideas that inspire.
+    </p>
+
+    <a
+      href="#open-positions"
+      className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+    >
+      View Open Positions
+      <ArrowRight className="w-5 h-5" />
+    </a>
+  </motion.div>
+</section>
+
 
       {/* Culture Section */}
 <section className="relative py-28 bg-gray-900 overflow-hidden">
@@ -260,9 +238,7 @@ const Careers = () => {
                         <span className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-full font-bold">
                           {job.experience}
                         </span>
-                        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-4 py-2 rounded-full font-bold">
-                          {job.salary}
-                        </span>
+                       
                       </div>
                     </div>
                     <button
@@ -328,7 +304,71 @@ const Careers = () => {
             <span className="text-gray-400 text-xl">or email us at shamediafactory@gmail.com</span>
           </div>
         </div>
+        
       </section>
+      
+
+<section className="py-24 bg-gray-900">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+          Calling All <span className="gradient-text">Talents</span>
+        </h2>
+        <p className="text-2xl text-gray-400 mb-12">
+          Got unique skills and passion to offer? We’d love to hear from you!<br />
+          Share your profile below and send your photos via WhatsApp.
+          
+        </p>
+        {/* WhatsApp Button */}
+    <a
+      href="https://wa.me/971509930532?text=Hi%20Media%20Factory%2C%20I’d%20like%20to%20share%20my%20photos%20and%20portfolio."
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center mb-12 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300"
+    >
+      Send via WhatsApp
+    </a>
+
+        <form ref={formRef} onSubmit={sendEmail} className="bg-gray-800 p-8 rounded-3xl space-y-6 text-left shadow-xl">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-gray-300 font-semibold mb-2">Full Name</label>
+              <input type="text" name="name" required className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400" />
+            </div>
+            <div>
+              <label className="block text-gray-300 font-semibold mb-2">Email</label>
+              <input type="email" name="email" required className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400" />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-gray-300 font-semibold mb-2">Which service describes you?</label>
+            <select name="service" required className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400">
+              <option value="">Select a category</option>
+              <option value="Dancer">Dancer</option>
+              <option value="Singer">Singer</option>
+              <option value="Host / Emcee">Host / Emcee</option>
+              <option value="Performer">Performer</option>
+              <option value="Musician">Musician</option>
+              <option value="Backstage Crew">Backstage Crew</option>
+              <option value="Lighting / Sound Tech">Lighting / Sound Tech</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-300 font-semibold mb-2">Tell us about your skills</label>
+            <textarea name="message" rows="5" required className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-yellow-400" placeholder="E.g. I’m a lighting technician with 5 years of experience..."></textarea>
+          </div>
+
+          <button type="submit" className="mt-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all duration-300">
+            {isSent ? "Submitted ✔" : "Submit Application"}
+          </button>
+        </form>
+      </div>
+    </section>
+  
+
+
     </div>
   );
 };
